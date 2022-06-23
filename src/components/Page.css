@@ -1,0 +1,37 @@
+.navbar{
+  background-color: black;
+}
+.brand{
+  font-size: 40px;
+  color:white;
+  text-align: center;
+}
+.inputtodo{
+  text-align: center;
+  margin: auto;
+  display: block;
+}
+.ant-col{
+  padding-top: 10px;
+  margin: auto;
+}
+.todotitle{
+  font-size: 20px;
+  text-align: center;
+}
+.dateandtime{
+  padding-left: 185px;
+}
+p {
+  margin-top: -36px;
+  
+}
+
+@media (max-width: 768px) {
+  .dateandtime{
+    padding-left: 65px;
+  }
+}
+
+
+
