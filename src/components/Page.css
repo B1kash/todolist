@@ -1,11 +1,26 @@
-.navbar{
-  background-color: black;
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@1,300&family=Poppins:wght@200;400&display=swap');
+*{
+  font-family: 'Nunito Sans', sans-serif;
+font-family: 'Poppins', sans-serif;
 }
-.brand{
+
+.ant-layout-header {
+  height: 64px;
+  padding: 0 50px;
+  color: #ebebec !important;
+  line-height: 64px;
+  background: #ededed !important;
+}
+
+
+.brand {
   font-size: 40px;
-  color:white;
+  color: dodgerblue !important;
   text-align: center;
 }
+
+
+
 .inputtodo{
   text-align: center;
   margin: auto;
@@ -25,6 +40,15 @@
 p {
   margin-top: -36px;
   
+}
+.todoinput{
+  align-items: center;
+}
+.selbtn{
+  text-align: end;
+}
+.selcheck{
+  text-align: end;
 }
 
 @media (max-width: 768px) {

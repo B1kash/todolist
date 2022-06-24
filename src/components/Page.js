@@ -13,7 +13,7 @@ const Page = () => {
     <>
     <Layout>
       <Header className='navbar'>
-        <h1 className='brand'>TODO-LIST</h1>
+        <h1 className='brand'>My Todo-s</h1>
       </Header>
       <Content>
         <TodoHead />

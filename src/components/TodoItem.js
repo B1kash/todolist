@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Col, Row, Checkbox, Popover, Button, Form, Input } from "antd";
-import { format } from "date-fns";
+// import { format } from "date-fns";
 import "./Page.css";
 import { DeleteTwoTone, EditTwoTone } from "@ant-design/icons";
 import { updateTodo } from "../features/todos/todoSlice";
@@ -19,6 +19,14 @@ const TodoItem = ({ todo }) => {
       updateTodo({ ...todo, status: checked ? "incomplete" : "complete" })
     );
   };
+
+  useEffect(()=>{
+    if(todo.status === 'complete'){
+      setChecked(true)
+    }else{
+      setChecked(false);
+    }
+  },[todo.status]);
 
   useEffect(() => {
     if (todo) {
@@ -43,17 +51,25 @@ const TodoItem = ({ todo }) => {
   };
 
   return (
+    <>
+     {/* new design */}
+
     <Row>
-      <Col span={24}>
-        <Row>
-          <Col span={8}>
-            <Checkbox checked={checked} onChange={onChange}></Checkbox>{" "}
-            <p className="todotitle">{todo.title}</p>
-          </Col>
-          <Col span={8}>
-            <div
+      <Col span={16} offset={4}>
+      <Row>
+      <Col span={4} >
+        <div className="selcheck">
+      <Checkbox checked={checked} setChecked={setChecked} onChange={onChange}></Checkbox>
+      </div>
+      </Col>
+      <Col span={8} >
+      {todo.title}
+      
+      </Col>
+      <Col span={4} >
+      <div
               className="icondelete"
-              // onClick={handleDelete}
+              
               onKeyDown={handleDelete}
               role="button"
               yavIndex={0}
@@ -97,14 +113,18 @@ const TodoItem = ({ todo }) => {
                 <EditTwoTone />
               </Popover>
             </div>
-          </Col>
-        </Row>
-
-        <p className="dateandtime">
-          {format(new Date(todo.time), "p, MM/dd/yyyy")}
-        </p>
+       
+      </Col>
+      
+    </Row>
       </Col>
     </Row>
+
+
+    {/* new design ends here*/}
+
+    
+    </>
   );
 };
 

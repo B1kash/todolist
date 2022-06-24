@@ -42,7 +42,72 @@ const TodoHead = () => {
   }
   return (
     <>
-      <Row className="inputtodo">
+    {/* new template */}
+    <Row>
+    
+      <Col span={14} offset={5}>
+      <Form
+            form={form}
+            onSubmit={(e) => handleSubmit(e)}
+            name="basic"
+            labelCol={{
+              span: 0,
+            }}
+            wrapperCol={{
+              span: 18,
+            }}
+            initialValues={{
+              remember: true,
+            }}
+            onFinish={handleSubmit}
+            autoComplete="off"
+          >
+            <Form.Item label="" name="username" className="todoinput">
+              <span>
+              <Input value={title} placeholder='Add task' onChange={(e) => setTitle(e.target.value)} />
+              
+              {/* <Button type="primary" htmlType="submit">
+                Add Todo
+              </Button> */}
+              </span>
+            </Form.Item>
+            <Form.Item
+              wrapperCol={{
+                offset: 10,
+                span: 1,
+              }}
+            >
+              <Button type="primary" htmlType="submit">
+                Add Todo
+              </Button>
+            </Form.Item>
+          </Form>
+      </Col>
+      
+    </Row>
+    <Row>
+      <Col span={12} offset={6} >
+        <div className="selbtn">
+        Filter
+      <SelectButton
+            id="status"
+            onChange={(e) => updateFilter(e)}
+            value={filterStatus}
+            
+          >
+            <option value="all">All</option>
+            <option value="incomplete">Incomplete</option>
+            <option value="complete">Completed</option>
+          </SelectButton>
+          </div>
+      </Col>
+    </Row>
+
+    {/* end of new template */}
+
+
+
+      {/* <Row className="inputtodo">
         <Col span={12}>
           <Form
             form={form}
@@ -52,7 +117,7 @@ const TodoHead = () => {
               span: 8,
             }}
             wrapperCol={{
-              span: 16,
+              span: 10,
             }}
             initialValues={{
               remember: true,
@@ -62,6 +127,9 @@ const TodoHead = () => {
           >
             <Form.Item label="" name="username" className="todoinput">
               <Input value={title} onChange={(e) => setTitle(e.target.value)} />
+              <Button type="primary" htmlType="submit">
+                Add Todo
+              </Button>
             </Form.Item>
             <Form.Item
               wrapperCol={{
@@ -86,7 +154,7 @@ const TodoHead = () => {
             <option value="complete">Completed</option>
           </SelectButton>
         </Col>
-      </Row>
+      </Row> */}
     </>
   );
 };
