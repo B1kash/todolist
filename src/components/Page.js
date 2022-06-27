@@ -1,5 +1,7 @@
 import React from 'react'
 import { Layout } from 'antd';
+import {Toaster} from 'react-hot-toast'
+
 import './Page.css'
 import TodoHead from './TodoHead';
 import Todo from './Todo';
@@ -21,6 +23,7 @@ const Page = () => {
       </Content>
       <Footer>
         
+        <Toaster/>
         </Footer>
     </Layout>
     </>

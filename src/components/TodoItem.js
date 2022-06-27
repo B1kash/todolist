@@ -1,18 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,} from "react";
 import { Col, Row, Checkbox, Popover, Button, Form, Input } from "antd";
-// import { format } from "date-fns";
+
 import "./Page.css";
 import { DeleteTwoTone, EditTwoTone } from "@ant-design/icons";
 import { updateTodo } from "../features/todos/todoSlice";
+import toast from "react-hot-toast";
 
 import { useDispatch } from "react-redux";
 import { deleteTodo } from "../features/todos/todoSlice";
 
 const TodoItem = ({ todo }) => {
   const [form] = Form.useForm();
-  const [title, setTitle] = useState("");
+  const [title, setTitle] = useState(todo.title);
   const [checked, setChecked] = useState(false);
   const dispatch = useDispatch();
+
+  
   const onChange = (e) => {
     setChecked(!checked);
     dispatch(
@@ -28,14 +31,11 @@ const TodoItem = ({ todo }) => {
     }
   },[todo.status]);
 
-  useEffect(() => {
-    if (todo) {
-      setTitle(todo.title);
-    }
-  }, [todo]);
+  
 
   const handleDelete = () => {
     dispatch(deleteTodo(todo.id));
+    toast.success('Task deleted successfully')
   };
   const handleUpdate = () => {
     if (title) {
@@ -47,6 +47,7 @@ const TodoItem = ({ todo }) => {
           })
         );
       }
+      toast.success('Task updated successfully')
     }
   };
 
@@ -76,24 +77,32 @@ const TodoItem = ({ todo }) => {
             >
               <DeleteTwoTone onClick={handleDelete} />
             </div>
-            <div className="iconedit" role="button" yavIndex={0}>
-              <Popover
+            <div className="iconedit" role="button" yavindex={0}>
+              <Popover 
+              
                 content={
-                  <Form onFinish={handleUpdate} form={form}>
+                  <Form onFinish={handleUpdate}  form={form}>
                     <Form.Item
                       label=""
+                      
                       name="todo"
                       rules={[
                         {
-                          required: true,
+                          required: false,
                           message: "Please input your Edited todo",
                         },
                       ]}
                     >
                       <Input
-                        value={title}
+                        
+                        type="text"
+                        defaultValue={title}
+                        
+                        
                         onChange={(e) => setTitle(e.target.value)}
                       />
+                      {/* <p className="todostateinput">{title}</p> */}
+                      
                     </Form.Item>
                     <Form.Item
                       wrapperCol={{
@@ -102,6 +111,7 @@ const TodoItem = ({ todo }) => {
                       }}
                     >
                       <Button type="primary" htmlType="submit">
+                      
                         Edit Todo
                       </Button>
                     </Form.Item>
@@ -110,7 +120,7 @@ const TodoItem = ({ todo }) => {
                 title="Edit Todo"
                 trigger="click"
               >
-                <EditTwoTone />
+                <EditTwoTone  />
               </Popover>
             </div>
        

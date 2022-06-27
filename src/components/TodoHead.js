@@ -6,6 +6,7 @@ import "./Page.css";
 import { useDispatch, useSelector } from "react-redux";
 import { addTodo, updateFilterStatus } from "../features/todos/todoSlice";
 import { v4 as uuid } from "uuid";
+import toast from "react-hot-toast";
 
 const TodoHead = () => {
   const [form] = Form.useForm();
@@ -23,6 +24,7 @@ const TodoHead = () => {
           time: new Date().toLocaleString(),
         })
       );
+      toast.success('Task added Succesfully');
     }
   };
 
@@ -66,9 +68,7 @@ const TodoHead = () => {
               <span>
               <Input value={title} placeholder='Add task' onChange={(e) => setTitle(e.target.value)} />
               
-              {/* <Button type="primary" htmlType="submit">
-                Add Todo
-              </Button> */}
+              
               </span>
             </Form.Item>
             <Form.Item
@@ -107,54 +107,7 @@ const TodoHead = () => {
 
 
 
-      {/* <Row className="inputtodo">
-        <Col span={12}>
-          <Form
-            form={form}
-            onSubmit={(e) => handleSubmit(e)}
-            name="basic"
-            labelCol={{
-              span: 8,
-            }}
-            wrapperCol={{
-              span: 10,
-            }}
-            initialValues={{
-              remember: true,
-            }}
-            onFinish={handleSubmit}
-            autoComplete="off"
-          >
-            <Form.Item label="" name="username" className="todoinput">
-              <Input value={title} onChange={(e) => setTitle(e.target.value)} />
-              <Button type="primary" htmlType="submit">
-                Add Todo
-              </Button>
-            </Form.Item>
-            <Form.Item
-              wrapperCol={{
-                offset: 8,
-                span: 16,
-              }}
-            >
-              <Button type="primary" htmlType="submit">
-                Add Todo
-              </Button>
-            </Form.Item>
-          </Form>
-        </Col>
-        <Col span={12}>
-          <SelectButton
-            id="status"
-            onChange={(e) => updateFilter(e)}
-            value={filterStatus}
-          >
-            <option value="all">All</option>
-            <option value="incomplete">Incomplete</option>
-            <option value="complete">Completed</option>
-          </SelectButton>
-        </Col>
-      </Row> */}
+      
     </>
   );
 };
